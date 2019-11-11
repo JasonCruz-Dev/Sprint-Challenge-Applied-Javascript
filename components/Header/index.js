@@ -14,12 +14,13 @@ function Header() {
    header.classList.add('header');
 
    const headerDate = document.createElement('span');
-   headerDate.classList.add('dat');
-   headerDate.appendChild(document.createTextNode('NOVEMBER 11, 2019'));
+   headerDate.classList.add('date');
+   headerDate.appendChild(document.createTextNode('NOVEMBER 10,2019'));
+
    header.appendChild(headerDate);
 
    const headerTitle = document.createElement('h1');
-   headerTitle.appendChild(document.createTextNode('Lambda Times'));
+   headerTitle.appendChild(document.createTextNode('LAMBDA TIMES'));
    header.appendChild(headerTitle);
 
    const headerTemp = document.createElement('span');
