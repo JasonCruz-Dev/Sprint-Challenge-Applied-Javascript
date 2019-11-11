@@ -27,4 +27,22 @@ function createArticleCard(article) {
    headline.classList.add('headline');
    headline.appendChild(document.createTextNode(article.headline));
    card.appendChild(headline);
+
+   const author = document.createElement('div');
+   author.classList.add('author');
+
+   const authorImgContainer = document.createElement('div');
+   authorImgContainer.classList.add('img-container');
+
+   const authorImg = document.createElement('img');
+   authorImg.src = article.authorPhoto;
+   authorImgContainer.appendChild(authorImg);
+   author.appendChild(authorImgContainer);
+
+   const author_name = document.createElement('span');
+   author_name.appendChild(document.createTextNode(`By ${article.authorName}`));
+   author.appendChild(author_name);
+   card.appendChild(author);
+
+   return card;
 }
