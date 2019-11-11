@@ -7,3 +7,18 @@
 //
 //  The tab component should look like this:
 //    <div class="tab">topic here</div>
+
+function filter_topic(topic) {
+   document.querySelectorAll(`div.card:not([data-topic = "${topic}])`).forEach(
+      el => el.style.display = 'none'
+   );
+   document.querySelectorAll(`div.card[data-topic = "${topic}]`).forEach(
+      el => el.style.display = 'block'
+   );
+}
+
+const docFragment = document.createDocumentFragment();
+const topics = document.querySelector('.topics');
+
+axious.get('https://lambda-times-backend.herokuapp.com/topics')
+   .then
