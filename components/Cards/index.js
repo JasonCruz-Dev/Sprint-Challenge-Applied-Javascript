@@ -46,3 +46,19 @@ function createArticleCard(article) {
 
    return card;
 }
+
+const articleFragment = document.createDocumentFragment();
+const articles = document.querySelector('.cards-container');
+
+axios.get('https://lambda-times-backend.herokuapp.com/articles')
+   .then(articleList => {
+      const list = articleList.data.articles;
+      Object.keys(list).forEach(topic => {
+         list[topic].forEach(article => {
+            const card = createArticleCard(article);
+            card.dataset.topic = topic;
+            articleFragment.appendChild(card)
+         });
+      });
+   })
+   .then(() => articles.appendChild(articleFragment));
