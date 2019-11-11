@@ -20,5 +20,17 @@ function filter_topic(topic) {
 const docFragment = document.createDocumentFragment();
 const topics = document.querySelector('.topics');
 
-axious.get('https://lambda-times-backend.herokuapp.com/topics')
-   .then
+axios.get('https://lambda-times-backend.herokuapp.com/topics')
+   .then(topic_list => {
+      topic_list.data.topics.forEach(topic => {
+         const topicComponent = document.createElement('div');
+         topicComponent.classList.add('tab');
+         topicComponent.appendChild(document.createTextNode(topic));
+         topicComponent.dataset.topic = topic === 'node.js' ? 'node' : topic;
+         topicComponent.addEventListener('click', function () {
+            filter_topic(this.dataset.topic);
+         });
+         docFragment.appendChild(topicComponent);
+      });
+   })
+   .then(() => topics.appendChild(docFragment));

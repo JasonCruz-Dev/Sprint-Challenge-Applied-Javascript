@@ -17,3 +17,14 @@
 // </div>
 //
 // Create a card for each of the articles and add the card to the DOM.
+
+function createArticleCard(article) {
+
+   const card = document.createElement('div');
+   card.classList.add('card');
+
+   const headline = document.createElement('div');
+   headline.classList.add('headline');
+   headline.appendChild(document.createTextNode(article.headline));
+   card.appendChild(headline);
+}
